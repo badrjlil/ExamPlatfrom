@@ -23,6 +23,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="688" max="32767" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -31,23 +36,11 @@
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" pref="342" max="-2" attributes="0"/>
                   <Component id="mdp" alignment="0" min="-2" pref="356" max="-2" attributes="0"/>
                   <Component id="email" alignment="0" min="-2" pref="356" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="289" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="342" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,7 +73,7 @@
           <Font name="Segoe UI" size="18" style="3"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Authenrtification d&apos;&#xe9;tudiant"/>
+        <Property name="text" type="java.lang.String" value="Authentification d&apos;&#xe9;tudiant"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
