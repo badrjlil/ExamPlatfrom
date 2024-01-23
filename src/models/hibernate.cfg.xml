@@ -12,11 +12,11 @@
 
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="Enseignant"/>
-        <mapping class="Matiere"/>
-        <mapping class="Classe"/>
-        <mapping class="Etudiant"/>
-        <mapping class="Examen"/>
-        <mapping class="Question"/>
+        <mapping class="models.Enseignant"/>
+        <mapping class="models.Matiere"/>
+        <mapping class="models.Classe"/>
+        <mapping class="models.Etudiant"/>
+        <mapping class="models.Examen"/>
+        <mapping class="models.Question"/>
     </session-factory>
 </hibernate-configuration>
