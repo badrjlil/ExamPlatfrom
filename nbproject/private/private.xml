@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/interfaces/Home.java</file>
+            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/models/Classe.java</file>
             <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/repositories/repoEnseignant.java</file>
             <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/services/serviceEnseignant.java</file>
-            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/models/Enseignant.java</file>
-            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/models/Main.java</file>
+            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/interfaces/profDashboard.java</file>
+            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/interfaces/gestionMatieres.java</file>
+            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/models/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/models/Matiere.java</file>
+            <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/Main.java</file>
             <file>file:/C:/Users/P3dR0/Documents/IGA/_Projets/Java%20avance/ExamPlatfrom/src/interfaces/auth_prof.java</file>
         </group>
     </open-files>

@@ -19,11 +19,9 @@ public class Matiere {
     public Matiere() {
     }
 
-    public Matiere(int id, String nom, Enseignant enseignant, List<Classe> classes) {
-        this.id = id;
+    public Matiere(String nom, Enseignant enseignant) {
         this.nom = nom;
         this.enseignant = enseignant;
-        this.classes = classes;
     }
 
     public int getId() {

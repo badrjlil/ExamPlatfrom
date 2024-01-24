@@ -10,6 +10,7 @@ public class Etudiant {
     private String prenom;
     private String nom;
     private String email;
+    private String motDePasse;
 
     @ManyToOne
     @JoinColumn(name = "classe_id")
@@ -18,13 +19,24 @@ public class Etudiant {
     public Etudiant() {
     }
 
-    public Etudiant(int id, String prenom, String nom, String email, Classe classe) {
+    public Etudiant(int id, String prenom, String nom, String email, String motDePasse, Classe classe) {
         this.id = id;
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
+        this.motDePasse = motDePasse;
         this.classe = classe;
     }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    
 
     public int getId() {
         return id;

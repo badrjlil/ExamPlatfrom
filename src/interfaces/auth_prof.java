@@ -3,7 +3,7 @@ package interfaces;
 import javax.swing.JOptionPane;
 import repositories.repoEnseignant;
 import services.serviceEnseignant;
-
+import models.Enseignant;
 public class auth_prof extends javax.swing.JFrame {
 
     private final serviceEnseignant ensService = new repoEnseignant();
@@ -88,9 +88,10 @@ public class auth_prof extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void connecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connecterActionPerformed
-        boolean loginAttempt = ensService.login(email.getText(), String.valueOf(mdp.getPassword()));
-        if(loginAttempt){
-            
+        Enseignant ens = ensService.login(email.getText(), String.valueOf(mdp.getPassword()));
+        if(ens != null){
+            new profDashboard(ens).setVisible(true);
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, "L'émail ou le mot de passe est incorrect, réssayer...");
         }
