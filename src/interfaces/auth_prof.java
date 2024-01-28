@@ -1,14 +1,14 @@
 package interfaces;
 
+import java.sql.*;
 import javax.swing.JOptionPane;
-import repositories.repoEnseignant;
-import services.serviceEnseignant;
-import models.Enseignant;
+import main.connection;
+
 public class auth_prof extends javax.swing.JFrame {
 
-    private final serviceEnseignant ensService = new repoEnseignant();
     public auth_prof() {
         initComponents();
+        look();
         this.setLocationRelativeTo(null);
     }
 
@@ -88,22 +88,24 @@ public class auth_prof extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void connecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connecterActionPerformed
-        Enseignant ens = ensService.login(email.getText(), String.valueOf(mdp.getPassword()));
-        if(ens != null){
-            new profDashboard(ens).setVisible(true);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, "L'émail ou le mot de passe est incorrect, réssayer...");
+        try{
+            Statement request = connection.connectDB().createStatement();
+            ResultSet r = request.executeQuery("SELECT id, prenom, nom FROM enseignant "
+                    + "WHERE email = '" + email.getText() + "' "
+                    + "AND motDePasse = '" + String.valueOf(mdp.getPassword()) +"'");
+            if(r.next()){
+                new dashEnseignant(r.getInt(1), r.getString(2), r.getString(3)).setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "L'émail ou le mot de passe est incorrect, réssayer");
+            }
+        }catch(Exception e){
+            e.getStackTrace();
         }
         
     }//GEN-LAST:event_connecterActionPerformed
 
-
-    public static void main(String args[]) {
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void look(){
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -120,7 +122,10 @@ public class auth_prof extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(auth_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }
+
+    public static void main(String args[]) {
+        
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

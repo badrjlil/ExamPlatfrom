@@ -1,35 +1,40 @@
 package interfaces;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import models.Enseignant;
-import models.Matiere;
-import repositories.repoEnseignant;
-import services.serviceEnseignant;
+import main.connection;
 
 public class gestionMatieres extends javax.swing.JFrame {
-private final serviceEnseignant ensService = new repoEnseignant();
-    Enseignant ens;
+
     private DefaultTableModel tableModel;
-    public gestionMatieres(Enseignant ens) {
-        this.ens = ens;
+    int idEns;
+
+    public gestionMatieres(int idEns) {
+        this.idEns = idEns;
         initComponents();
         this.setLocationRelativeTo(null);
         refreshAffichage();
     }
 
-    private void refreshAffichage(){
-        List<Matiere> matieres = ensService.afficherMatieres(ens.getId());
-        String[] columnNames = {"Id", "Nom"};
-        tableModel = new DefaultTableModel(columnNames, 0);
-        jTable1.setModel(tableModel);
-        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    private void refreshAffichage() {
+        try {
+            Statement request = connection.connectDB().createStatement();
+            ResultSet r = request.executeQuery("SELECT * FROM matiere WHERE enseignant_id = " + idEns);
+            String[] columnNames = {"Id", "Nom"};
+            tableModel = new DefaultTableModel(columnNames, 0);
+            jTable1.setModel(tableModel);
+            jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        for(Matiere m : matieres){
-            Object[] rowData = {m.getId(), m.getNom()};
-            tableModel.addRow(rowData);
+            while (r.next()) {
+                Object[] rowData = {r.getInt(1), r.getString(2)};
+                tableModel.addRow(rowData);
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
         }
     }
 
@@ -158,14 +163,17 @@ private final serviceEnseignant ensService = new repoEnseignant();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ajoutMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutMatActionPerformed
-        Matiere m = new Matiere(nv_matiere.getText(), ens);
-        try{
-            ensService.ajouterMatiere(m);
+        //Matiere m = new Matiere(nv_matiere.getText(), ens);
+        try {
+            Statement req = connection.connectDB().createStatement();
+            req.executeUpdate("INSERT INTO matiere (nom, enseignant_id) VALUES('"
+                    + nv_matiere.getText() + "', " + idEns
+                    + ")");
             JOptionPane.showMessageDialog(this, "Matière ajoutée avec success");
             nv_matiere.setText("");
             refreshAffichage();
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_ajoutMatActionPerformed
@@ -177,10 +185,17 @@ private final serviceEnseignant ensService = new repoEnseignant();
     private void suppMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppMatActionPerformed
         int rowIndice = -1;
         rowIndice = jTable1.getSelectedRow();
-        if(rowIndice != -1){
-            ensService.supprimerMatiere((int) tableModel.getValueAt(rowIndice, 0));
+        if (rowIndice != -1) {
+            try {
+
+                Statement req = connection.connectDB().createStatement();
+                req.executeUpdate("DELETE FROM matiere WHERE id = " + (int) tableModel.getValueAt(rowIndice, 0));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
         }
         refreshAffichage();
+
     }//GEN-LAST:event_suppMatActionPerformed
 
     public static void main(String args[]) {
