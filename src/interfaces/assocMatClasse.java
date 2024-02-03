@@ -112,10 +112,6 @@ public class assocMatClasse extends javax.swing.JFrame {
             Statement stmt = connection.connectDB().createStatement();
             String sql = "SELECT m.id, m.nom FROM matiere m "
                     + "WHERE m.enseignant_id = " + this.idEnseignant;
-            /*+ " AND NOT EXISTS ( "
-                    + "    SELECT 1 FROM matiere_classe mc "
-                    + "    WHERE mc.matiere_id = m.id " +
-            ")";*/
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 String subjectInfo = rs.getInt("id") + " - " + rs.getString("nom");
