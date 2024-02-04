@@ -1,4 +1,4 @@
-package interfaces;
+package ensignantIterfaces;
 
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -10,14 +10,14 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import main.connection;
 
-public class formulaire_prof extends javax.swing.JFrame {
+public class questionnaire extends javax.swing.JFrame {
 
     private int idEnseignant, classe, matiere, duree, generatedExamenId = -1;
     private String date;
     private DefaultListModel<String> suggestionListModel = new DefaultListModel<>();
     private Map<String, Integer> questions = new HashMap<>();
 
-    public formulaire_prof(int idEns, int matiere, int classe, int duree, String date) {
+    public questionnaire(int idEns, int matiere, int classe, int duree, String date) {
         this.idEnseignant = idEns;
         this.matiere = matiere;
         this.classe = classe;
@@ -27,7 +27,7 @@ public class formulaire_prof extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public formulaire_prof() {
+    public questionnaire() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -271,14 +271,15 @@ public class formulaire_prof extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formulaire_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(questionnaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formulaire_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(questionnaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formulaire_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(questionnaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formulaire_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(questionnaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

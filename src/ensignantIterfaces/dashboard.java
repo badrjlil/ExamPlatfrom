@@ -1,11 +1,17 @@
-package interfaces;
+package ensignantIterfaces;
 
-public class dashEnseignant extends javax.swing.JFrame {
+import ensignantIterfaces.gestionMatieres;
+import ensignantIterfaces.planificateurExamen;
+import ensignantIterfaces.listeEtudiants;
+import ensignantIterfaces.assocMatClasse;
+import main.Home;
+
+public class dashboard extends javax.swing.JFrame {
 
     int idEnseignant;
     String prenom, nom;
 
-    public dashEnseignant(int idEns, String prenom, String nom) {
+    public dashboard(int idEns, String prenom, String nom) {
         this.idEnseignant = idEns;
         this.prenom = prenom;
         this.nom = nom;
@@ -146,7 +152,7 @@ public class dashEnseignant extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new planifierExamen(idEnseignant).setVisible(true);
+        new planificateurExamen(idEnseignant).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void look() {
@@ -158,13 +164,13 @@ public class dashEnseignant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dashEnseignant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dashEnseignant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dashEnseignant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dashEnseignant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
 
@@ -172,7 +178,7 @@ public class dashEnseignant extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dashEnseignant(1, "test", "test").setVisible(true);
+                new dashboard(1, "test", "test").setVisible(true);
             }
         });
     }

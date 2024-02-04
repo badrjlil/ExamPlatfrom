@@ -26,11 +26,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="connecter" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -48,6 +43,17 @@
                   </Group>
               </Group>
               <EmptySpace pref="314" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Component id="back" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="connecter" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,7 +74,9 @@
               </Group>
               <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
               <Component id="connecter" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="92" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="back" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,6 +121,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="mdp">
+    </Component>
+    <Component class="javax.swing.JButton" name="back">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="retour"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

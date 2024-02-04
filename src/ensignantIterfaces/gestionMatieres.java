@@ -1,4 +1,4 @@
-package interfaces;
+package ensignantIterfaces;
 
 import java.sql.ResultSet;
 import java.sql.Statement;

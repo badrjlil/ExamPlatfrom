@@ -1,12 +1,14 @@
-package interfaces;
+package ensignantIterfaces;
 
+import ensignantIterfaces.dashboard;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import main.Home;
 import main.connection;
 
-public class auth_prof extends javax.swing.JFrame {
+public class loginP extends javax.swing.JFrame {
 
-    public auth_prof() {
+    public loginP() {
         initComponents();
         look();
         this.setLocationRelativeTo(null);
@@ -22,6 +24,7 @@ public class auth_prof extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         connecter = new javax.swing.JButton();
         mdp = new javax.swing.JPasswordField();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 0));
@@ -44,14 +47,17 @@ public class auth_prof extends javax.swing.JFrame {
             }
         });
 
+        back.setText("retour");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(connecter)
-                .addGap(134, 134, 134))
             .addGroup(layout.createSequentialGroup()
                 .addGap(203, 203, 203)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -65,6 +71,14 @@ public class auth_prof extends javax.swing.JFrame {
                             .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                             .addComponent(mdp))))
                 .addContainerGap(314, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(connecter))
+                .addGap(134, 134, 134))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +95,9 @@ public class auth_prof extends javax.swing.JFrame {
                     .addComponent(mdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(99, 99, 99)
                 .addComponent(connecter)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(back)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,7 +110,7 @@ public class auth_prof extends javax.swing.JFrame {
                     + "WHERE email = '" + email.getText() + "' "
                     + "AND motDePasse = '" + String.valueOf(mdp.getPassword()) +"'");
             if(r.next()){
-                new dashEnseignant(r.getInt(1), r.getString(2), r.getString(3)).setVisible(true);
+                new dashboard(r.getInt(1), r.getString(2), r.getString(3)).setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(this, "L'émail ou le mot de passe est incorrect, réssayer");
@@ -105,6 +121,11 @@ public class auth_prof extends javax.swing.JFrame {
         
     }//GEN-LAST:event_connecterActionPerformed
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        this.dispose();
+        new Home().setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
+
     private void look(){
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -114,13 +135,13 @@ public class auth_prof extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(auth_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(auth_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(auth_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(auth_prof.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
 
@@ -129,12 +150,13 @@ public class auth_prof extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new auth_prof().setVisible(true);
+                new loginP().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
     private javax.swing.JButton connecter;
     private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;

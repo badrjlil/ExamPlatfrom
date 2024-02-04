@@ -1,4 +1,4 @@
-package interfaces;
+package ensignantIterfaces;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -6,14 +6,14 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import main.connection;
 
-public class planifierExamen extends javax.swing.JFrame {
+public class planificateurExamen extends javax.swing.JFrame {
 
     int idEnseignant;
     private String classe, matiere;
     private int duree;
     java.sql.Date date;
 
-    public planifierExamen(int idEns) {
+    public planificateurExamen(int idEns) {
         this.idEnseignant = idEns;
         look();
         initComponents();
@@ -70,6 +70,7 @@ public class planifierExamen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         dureeValue = new javax.swing.JSlider();
         heureLabel = new javax.swing.JLabel();
+        quit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,6 +119,13 @@ public class planifierExamen extends javax.swing.JFrame {
 
         heureLabel.setText("0 minutes");
 
+        quit.setText("Annuler");
+        quit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,7 +155,9 @@ public class planifierExamen extends javax.swing.JFrame {
                 .addContainerGap(62, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(quit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(103, 103, 103))
         );
         layout.setVerticalGroup(
@@ -171,7 +181,9 @@ public class planifierExamen extends javax.swing.JFrame {
                         .addComponent(heureLabel)))
                 .addGap(93, 93, 93)
                 .addComponent(jButton1)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(quit)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,7 +218,7 @@ public class planifierExamen extends javax.swing.JFrame {
         } else if (duree == 0) {
             JOptionPane.showMessageDialog(this, "Veuillez choisir la duree");
         } else {
-            new formulaire_prof(idEnseignant, Integer.parseInt(matiere), Integer.parseInt(classe), duree, String.valueOf(date)).setVisible(true);
+            new questionnaire(idEnseignant, Integer.parseInt(matiere), Integer.parseInt(classe), duree, String.valueOf(date)).setVisible(true);
             this.dispose();
         }
 
@@ -217,6 +229,10 @@ public class planifierExamen extends javax.swing.JFrame {
         classe = a[0].replace(" ", "");
     }//GEN-LAST:event_classCombItemStateChanged
 
+    private void quitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_quitActionPerformed
+
     public void look() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -226,13 +242,13 @@ public class planifierExamen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(planifierExamen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(planificateurExamen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(planifierExamen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(planificateurExamen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(planifierExamen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(planificateurExamen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(planifierExamen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(planificateurExamen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
 
@@ -240,7 +256,7 @@ public class planifierExamen extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new planifierExamen(1).setVisible(true);
+                new planificateurExamen(1).setVisible(true);
             }
         });
     }
@@ -256,5 +272,6 @@ public class planifierExamen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox<String> matComb;
+    private javax.swing.JButton quit;
     // End of variables declaration//GEN-END:variables
 }

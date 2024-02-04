@@ -1,6 +1,7 @@
-package interfaces;
+package main;
 
-import interfaces.auth_prof;
+import etudiantInterfaces.loginE;
+import ensignantIterfaces.loginP;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -48,6 +49,11 @@ public class Home extends javax.swing.JFrame {
         });
 
         loginEtud.setText("Se connecter");
+        loginEtud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginEtudActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,9 +98,13 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginProfActionPerformed
-        new auth_prof().setVisible(true);
+        new loginP().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginProfActionPerformed
+
+    private void loginEtudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginEtudActionPerformed
+        new loginE().setVisible(true);
+    }//GEN-LAST:event_loginEtudActionPerformed
 
     private void look(){
         try {
