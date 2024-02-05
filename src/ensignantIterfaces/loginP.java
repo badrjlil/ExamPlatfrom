@@ -9,6 +9,7 @@ import main.connection;
 public class loginP extends javax.swing.JFrame {
 
     public loginP() {
+         this.setSize(740, 410);
         initComponents();
         look();
         this.setLocationRelativeTo(null);
@@ -25,17 +26,27 @@ public class loginP extends javax.swing.JFrame {
         connecter = new javax.swing.JButton();
         mdp = new javax.swing.JPasswordField();
         back = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 0));
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Authentification du professeur");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(220, 20, 342, 31);
 
         jLabel2.setText("Email");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(50, 120, 29, 16);
 
         jLabel3.setText("Mot de passe");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(50, 180, 70, 16);
+        getContentPane().add(email);
+        email.setBounds(140, 120, 356, 22);
 
         connecter.setBackground(new java.awt.Color(51, 255, 0));
         connecter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -46,6 +57,10 @@ public class loginP extends javax.swing.JFrame {
                 connecterActionPerformed(evt);
             }
         });
+        getContentPane().add(connecter);
+        connecter.setBounds(560, 300, 116, 27);
+        getContentPane().add(mdp);
+        mdp.setBounds(140, 180, 356, 22);
 
         back.setText("retour");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -53,52 +68,12 @@ public class loginP extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
+        getContentPane().add(back);
+        back.setBounds(570, 340, 110, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                            .addComponent(mdp))))
-                .addContainerGap(314, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(connecter))
-                .addGap(134, 134, 134))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(mdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(99, 99, 99)
-                .addComponent(connecter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(back)
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 740, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,6 +137,7 @@ public class loginP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField mdp;
     // End of variables declaration//GEN-END:variables
 }

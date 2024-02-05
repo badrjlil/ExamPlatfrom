@@ -4,18 +4,73 @@
  */
 package etudiantInterfaces;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
 /**
  *
  * @author USER
  */
 public class examen extends javax.swing.JFrame {
-
+     private Connection connection;
+     private ResultSet resultSet;
+     private Timer countdownTimer;
+private int secondsLeft;
     /**
      * Creates new form examen
      */
     public examen() {
         initComponents();
+        this.setSize(740, 410);
+        fetchQuestionFromDatabase(); 
+        secondsLeft = 300; // 5 minutes
+    countdownTimer = new Timer(1000, e -> updateCountdown());
+    countdownTimer.start();
+        
     }
+   private void fetchQuestionFromDatabase() {
+        try {
+            String sql = "SELECT q.question, qr.reponsespossibles FROM question q " +
+                         "JOIN question_reponses qr ON q.id = qr.question_id " +
+                         "ORDER BY RANDOM() LIMIT 1"; // Fetch a random question for simplicity
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                question.setText(resultSet.getString("question"));
+
+                String reponsesPossibles = resultSet.getString("reponsespossibles");
+                String[] reponsesArray = reponsesPossibles.split(",");
+
+                rep1.setText(reponsesArray[0]);
+                rep2.setText(reponsesArray[1]);
+                rep3.setText(reponsesArray[2]);
+                rep4.setText(reponsesArray[3]);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+   private void updateCountdown() {
+        if (secondsLeft > 0) {
+        secondsLeft--;
+        int minutes = secondsLeft / 60;
+        int seconds = secondsLeft % 60;
+        String countdownText = String.format("%02d:%02d", minutes, seconds);
+        
+        // Mettez à jour votre interface utilisateur avec countdownText
+        conteRebour.setText("Compte à rebours : " + countdownText);
+    } else {
+        // Le compte à rebours est terminé, vous pouvez prendre des mesures ici (par exemple, fermer la fenêtre)
+        countdownTimer.stop();
+         JOptionPane.showMessageDialog(this, "Le temps est écoulé !");
+    }
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,28 +90,45 @@ public class examen extends javax.swing.JFrame {
         rep2 = new javax.swing.JCheckBox();
         rep3 = new javax.swing.JCheckBox();
         rep4 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        next = new javax.swing.JButton();
+        conteRebour = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("QCM");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(170, 10, 342, 35);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Question :");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(47, 104, 56, 16);
 
         question.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(question);
+        question.setBounds(97, 123, 467, 25);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Cohcez la ou les bonnes réponses :");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(47, 55, 231, 20);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Réponses :");
+        jLabel4.setText("Suggestions :");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(47, 160, 73, 16);
 
         rep1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
+        getContentPane().add(rep1);
+        rep1.setBounds(113, 194, 421, 23);
 
         rep2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
+        getContentPane().add(rep2);
+        rep2.setBounds(113, 223, 421, 23);
 
         rep3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         rep3.addActionListener(new java.awt.event.ActionListener() {
@@ -64,72 +136,33 @@ public class examen extends javax.swing.JFrame {
                 rep3ActionPerformed(evt);
             }
         });
+        getContentPane().add(rep3);
+        rep3.setBounds(113, 252, 421, 23);
 
         rep4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
+        getContentPane().add(rep4);
+        rep4.setBounds(113, 281, 421, 23);
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Suivant");
+        next.setBackground(new java.awt.Color(51, 255, 0));
+        next.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        next.setForeground(new java.awt.Color(255, 255, 255));
+        next.setText("Suivant");
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
+        getContentPane().add(next);
+        next.setBounds(600, 330, 79, 27);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rep1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rep2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rep3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rep4, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE))))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(329, 329, 329))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(75, 75, 75))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel3)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel2)
-                .addGap(3, 3, 3)
-                .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(rep1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rep2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rep3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rep4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(53, 53, 53))
-        );
+        conteRebour.setForeground(new java.awt.Color(242, 242, 242));
+        conteRebour.setText("conte à rebour");
+        getContentPane().add(conteRebour);
+        conteRebour.setBounds(490, 10, 210, 16);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 740, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,6 +170,15 @@ public class examen extends javax.swing.JFrame {
     private void rep3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rep3ActionPerformed
+
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+        fetchQuestionFromDatabase(); // Fetch the next question when the button is clicked
+    // Clear the selected checkboxes for the new question
+    rep1.setSelected(false);
+    rep2.setSelected(false);
+    rep3.setSelected(false);
+    rep4.setSelected(false);
+    }//GEN-LAST:event_nextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,11 +216,13 @@ public class examen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel conteRebour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton next;
     private javax.swing.JLabel question;
     private javax.swing.JCheckBox rep1;
     private javax.swing.JCheckBox rep2;

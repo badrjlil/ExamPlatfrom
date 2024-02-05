@@ -15,6 +15,7 @@ public class planificateurExamen extends javax.swing.JFrame {
 
     public planificateurExamen(int idEns) {
         this.idEnseignant = idEns;
+         this.setSize(740, 410);
         look();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -71,34 +72,54 @@ public class planificateurExamen extends javax.swing.JFrame {
         dureeValue = new javax.swing.JSlider();
         heureLabel = new javax.swing.JLabel();
         quit = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         jLabel1.setText("Matiére :");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(220, 70, 60, 20);
 
         matComb.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 matCombItemStateChanged(evt);
             }
         });
+        getContentPane().add(matComb);
+        matComb.setBounds(302, 62, 170, 22);
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         jLabel2.setText("Classe: ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(230, 110, 50, 20);
 
         classComb.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 classCombItemStateChanged(evt);
             }
         });
+        getContentPane().add(classComb);
+        classComb.setBounds(302, 110, 170, 22);
 
         dateText.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 dateTextPropertyChange(evt);
             }
         });
+        getContentPane().add(dateText);
+        dateText.setBounds(164, 177, 204, 22);
 
+        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         jLabel3.setText("Date: ");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(110, 180, 50, 20);
 
+        jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         jLabel4.setText("Durée:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(400, 180, 50, 20);
 
         jButton1.setText("Planifier l'examen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +127,8 @@ public class planificateurExamen extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(465, 292, 170, 23);
 
         dureeValue.setMaximum(180);
         dureeValue.setMinimum(5);
@@ -116,8 +139,13 @@ public class planificateurExamen extends javax.swing.JFrame {
                 dureeValueStateChanged(evt);
             }
         });
+        getContentPane().add(dureeValue);
+        dureeValue.setBounds(465, 177, 153, 20);
 
+        heureLabel.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         heureLabel.setText("0 minutes");
+        getContentPane().add(heureLabel);
+        heureLabel.setBounds(620, 180, 70, 20);
 
         quit.setText("Annuler");
         quit.addActionListener(new java.awt.event.ActionListener() {
@@ -125,66 +153,12 @@ public class planificateurExamen extends javax.swing.JFrame {
                 quitActionPerformed(evt);
             }
         });
+        getContentPane().add(quit);
+        quit.setBounds(465, 333, 170, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(matComb, 0, 170, Short.MAX_VALUE)
-                            .addComponent(classComb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel4)
-                        .addGap(27, 27, 27)
-                        .addComponent(dureeValue, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(heureLabel)))
-                .addContainerGap(62, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(quit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(103, 103, 103))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(matComb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(classComb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(dureeValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(heureLabel)))
-                .addGap(93, 93, 93)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(quit)
-                .addContainerGap(83, Short.MAX_VALUE))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 740, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -271,6 +245,7 @@ public class planificateurExamen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JComboBox<String> matComb;
     private javax.swing.JButton quit;
     // End of variables declaration//GEN-END:variables

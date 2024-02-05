@@ -10,6 +10,7 @@ public class assocMatClasse extends javax.swing.JFrame {
     private int idEnseignant;
 
     public assocMatClasse(int idEns) {
+         this.setSize(740, 410);
         this.idEnseignant = idEns;
         initComponents();
         look();
@@ -27,18 +28,28 @@ public class assocMatClasse extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         assocButton = new javax.swing.JButton();
         quit = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+        getContentPane().add(classComb);
+        classComb.setBounds(350, 120, 184, 22);
 
         matComb.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 matCombItemStateChanged(evt);
             }
         });
+        getContentPane().add(matComb);
+        matComb.setBounds(120, 120, 184, 22);
 
         jLabel2.setText("Classe:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(350, 100, 36, 16);
 
         jLabel3.setText("Matiére:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(130, 100, 43, 16);
 
         assocButton.setText("Assoccier");
         assocButton.addActionListener(new java.awt.event.ActionListener() {
@@ -46,61 +57,23 @@ public class assocMatClasse extends javax.swing.JFrame {
                 assocButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(assocButton);
+        assocButton.setBounds(250, 190, 148, 23);
 
+        quit.setBackground(new java.awt.Color(255, 0, 0));
+        quit.setForeground(new java.awt.Color(242, 242, 242));
         quit.setText("Quitter");
         quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quitActionPerformed(evt);
             }
         });
+        getContentPane().add(quit);
+        quit.setBounds(440, 320, 148, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(matComb, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(classComb, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel2)))
-                .addGap(86, 86, 86))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addComponent(assocButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(quit, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(classComb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(matComb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
-                .addComponent(assocButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(quit)
-                .addGap(25, 25, 25))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 680, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,6 +175,7 @@ public class assocMatClasse extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> classComb;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox<String> matComb;
     private javax.swing.JButton quit;
     // End of variables declaration//GEN-END:variables
