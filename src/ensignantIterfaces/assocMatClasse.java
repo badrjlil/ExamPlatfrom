@@ -10,10 +10,10 @@ public class assocMatClasse extends javax.swing.JFrame {
     private int idEnseignant;
 
     public assocMatClasse(int idEns) {
-         this.setSize(740, 410);
         this.idEnseignant = idEns;
         initComponents();
         look();
+        setSize(564, 392); 
         this.setLocationRelativeTo(null);
         populateSubjectDropdown();
     }
@@ -28,12 +28,12 @@ public class assocMatClasse extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         assocButton = new javax.swing.JButton();
         quit = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(classComb);
-        classComb.setBounds(350, 120, 184, 22);
+        classComb.setBounds(294, 119, 184, 26);
 
         matComb.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -41,16 +41,19 @@ public class assocMatClasse extends javax.swing.JFrame {
             }
         });
         getContentPane().add(matComb);
-        matComb.setBounds(120, 120, 184, 22);
+        matComb.setBounds(71, 119, 184, 26);
 
+        jLabel2.setForeground(new java.awt.Color(0, 153, 255));
         jLabel2.setText("Classe:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(350, 100, 36, 16);
+        jLabel2.setBounds(303, 97, 36, 16);
 
+        jLabel3.setForeground(new java.awt.Color(0, 153, 255));
         jLabel3.setText("Matiére:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(130, 100, 43, 16);
+        jLabel3.setBounds(79, 97, 43, 16);
 
+        assocButton.setBackground(new java.awt.Color(0, 102, 0));
         assocButton.setText("Assoccier");
         assocButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,10 +61,9 @@ public class assocMatClasse extends javax.swing.JFrame {
             }
         });
         getContentPane().add(assocButton);
-        assocButton.setBounds(250, 190, 148, 23);
+        assocButton.setBounds(203, 192, 148, 27);
 
-        quit.setBackground(new java.awt.Color(255, 0, 0));
-        quit.setForeground(new java.awt.Color(242, 242, 242));
+        quit.setBackground(new java.awt.Color(255, 0, 51));
         quit.setText("Quitter");
         quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,11 +71,12 @@ public class assocMatClasse extends javax.swing.JFrame {
             }
         });
         getContentPane().add(quit);
-        quit.setBounds(440, 320, 148, 23);
+        quit.setBounds(390, 300, 148, 27);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 680, 360);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\gg.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 570, 380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,7 +168,7 @@ public class assocMatClasse extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new assocMatClasse(1).setVisible(true);
+                new assocMatClasse(1).setVisible(true);
             }
         });
     }
@@ -173,9 +176,9 @@ public class assocMatClasse extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assocButton;
     private javax.swing.JComboBox<String> classComb;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox<String> matComb;
     private javax.swing.JButton quit;
     // End of variables declaration//GEN-END:variables

@@ -24,13 +24,14 @@ public class questionnaire extends javax.swing.JFrame {
         this.duree = duree;
         this.date = date;
         initComponents();
-         this.setSize(740, 410);
         this.setLocationRelativeTo(null);
     }
 
     public questionnaire() {
         initComponents();
+        setSize(725, 450); 
         this.setLocationRelativeTo(null);
+        
     }
 
     private void addSuggestionToList() {
@@ -68,14 +69,16 @@ public class questionnaire extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Formulaire du professeur ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(210, 10, 342, 35);
+        jLabel1.setBounds(250, 10, 342, 35);
 
+        jLabel2.setForeground(new java.awt.Color(0, 102, 255));
         jLabel2.setText("Entrez votre questions ici s'il vous plait :");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 50, 208, 16);
+        jLabel2.setBounds(110, 60, 208, 16);
 
         question.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         question.addActionListener(new java.awt.event.ActionListener() {
@@ -84,22 +87,26 @@ public class questionnaire extends javax.swing.JFrame {
             }
         });
         getContentPane().add(question);
-        question.setBounds(140, 70, 480, 26);
+        question.setBounds(100, 90, 613, 26);
 
+        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
         jLabel3.setText("Entrez les suggestions de cette question :");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 120, 215, 16);
+        jLabel3.setBounds(20, 120, 215, 16);
 
+        jLabel4.setForeground(new java.awt.Color(0, 102, 255));
         jLabel4.setText("Suggestion :");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(90, 150, 65, 16);
         getContentPane().add(suggestion);
-        suggestion.setBounds(160, 150, 330, 22);
+        suggestion.setBounds(170, 150, 379, 26);
 
+        jLabel5.setForeground(new java.awt.Color(0, 102, 255));
         jLabel5.setText("Entrer la réponse correcte de ce question : ");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 340, 223, 16);
+        jLabel5.setBounds(30, 320, 223, 16);
 
+        jButton1.setBackground(new java.awt.Color(0, 153, 51));
         jButton1.setText("Valider et ajouter une nouvelle question");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +114,7 @@ public class questionnaire extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(160, 390, 289, 23);
+        jButton1.setBounds(230, 360, 289, 27);
 
         jButton2.setBackground(new java.awt.Color(0, 51, 255));
         jButton2.setForeground(new java.awt.Color(242, 242, 242));
@@ -118,14 +125,14 @@ public class questionnaire extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(610, 390, 110, 37);
+        jButton2.setBounds(590, 360, 110, 37);
 
         jScrollPane1.setViewportView(suggestionList);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(130, 180, 460, 142);
+        jScrollPane1.setBounds(90, 180, 569, 142);
         getContentPane().add(reponse);
-        reponse.setBounds(270, 340, 450, 22);
+        reponse.setBounds(260, 330, 370, 26);
 
         ajouterSuggestion.setText("Ajouter");
         ajouterSuggestion.addActionListener(new java.awt.event.ActionListener() {
@@ -134,11 +141,11 @@ public class questionnaire extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ajouterSuggestion);
-        ajouterSuggestion.setBounds(500, 180, 72, 23);
+        ajouterSuggestion.setBounds(550, 150, 76, 27);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\Vector graphic of gradient abstract background.jpg")); // NOI18N
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, -50, 780, 560);
+        jLabel6.setBounds(0, 0, 735, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,7 +246,7 @@ public class questionnaire extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new formulaire_prof(1, 11, 1, 50, "2024-02-20").setVisible(true);
+               
             }
         });
     }

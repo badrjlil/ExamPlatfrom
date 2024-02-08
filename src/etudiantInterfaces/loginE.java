@@ -12,7 +12,7 @@ public class loginE extends javax.swing.JFrame {
     public loginE() {
         initComponents();
         this.setLocationRelativeTo(null);
-         this.setSize(740, 410);
+         this.setSize(740, 452);
     }
 
     @SuppressWarnings("unchecked")
@@ -32,20 +32,28 @@ public class loginE extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Authentification d'étudiant");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(200, 20, 342, 31);
 
+        jLabel2.setFont(new java.awt.Font("Nirmala UI", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 255));
         jLabel2.setText("Email");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(110, 120, 50, 16);
 
+        jLabel3.setFont(new java.awt.Font("Nirmala UI", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 255));
         jLabel3.setText("Mot de passe");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(90, 180, 90, 16);
+
+        email.setBackground(new java.awt.Color(255, 255, 255));
+        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(email);
-        email.setBounds(200, 120, 356, 22);
+        email.setBounds(200, 120, 356, 18);
 
         jButton1.setBackground(new java.awt.Color(51, 255, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -57,9 +65,12 @@ public class loginE extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(590, 300, 116, 27);
+        jButton1.setBounds(590, 300, 120, 31);
+
+        mdp.setBackground(new java.awt.Color(255, 255, 255));
+        mdp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(mdp);
-        mdp.setBounds(200, 180, 356, 22);
+        mdp.setBounds(200, 180, 356, 18);
 
         back.setText("retour");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -68,9 +79,10 @@ public class loginE extends javax.swing.JFrame {
             }
         });
         getContentPane().add(back);
-        back.setBounds(590, 350, 116, 23);
+        back.setBounds(590, 350, 116, 27);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\Download White background with Blue Geometric and white line pattern for free.jpg")); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 740, 410);
 
@@ -84,7 +96,8 @@ public class loginE extends javax.swing.JFrame {
                     + "WHERE email = '" + email.getText() + "' "
                     + "AND motDePasse = '" + String.valueOf(mdp.getPassword()) +"'");
             if(r.next()){
-                new dashboardE(r.getInt(1), r.getString(2), r.getString(3)).setVisible(true);
+                new PlanExam(r.getInt(1)).setVisible(true);
+                //new dashboardE(r.getInt(1), r.getString(2), r.getString(3)).setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(this, "L'émail ou le mot de passe est incorrect, réssayer");

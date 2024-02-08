@@ -16,8 +16,8 @@ public class dashboard extends javax.swing.JFrame {
         this.prenom = prenom;
         this.nom = nom;
         initComponents();
-         this.setSize(740, 410);
         look();
+        setSize(620, 450); 
         this.setLocationRelativeTo(null);
         welcomeLabel.setText(welcomeLabel.getText() + " " + prenom + " " + nom);
     }
@@ -33,20 +33,25 @@ public class dashboard extends javax.swing.JFrame {
         welcomeLabel = new javax.swing.JLabel();
         logOut = new javax.swing.JButton();
         logOut1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jButton1.setBackground(new java.awt.Color(0, 102, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Gestion des matières");
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(90, 100, 229, 74);
+        jButton1.setBounds(50, 110, 190, 60);
 
+        jButton2.setBackground(new java.awt.Color(0, 102, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Gestion des classes");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,8 +59,10 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(410, 240, 229, 74);
+        jButton2.setBounds(350, 240, 190, 60);
 
+        jButton3.setBackground(new java.awt.Color(0, 102, 255));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Planifier examen");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,8 +70,10 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(100, 240, 229, 74);
+        jButton3.setBounds(50, 240, 190, 60);
 
+        jButton4.setBackground(new java.awt.Color(0, 102, 255));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Liste des étudiants");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,14 +81,15 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(410, 100, 229, 74);
+        jButton4.setBounds(350, 110, 190, 60);
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        welcomeLabel.setForeground(new java.awt.Color(242, 242, 242));
+        welcomeLabel.setForeground(new java.awt.Color(0, 102, 204));
         welcomeLabel.setText("Bonjour");
         getContentPane().add(welcomeLabel);
-        welcomeLabel.setBounds(245, 34, 84, 32);
+        welcomeLabel.setBounds(150, 20, 300, 32);
 
+        logOut.setBackground(new java.awt.Color(255, 0, 51));
         logOut.setText("Se déconnecter");
         logOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,8 +97,10 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(logOut);
-        logOut.setBounds(440, 370, 132, 23);
+        logOut.setBounds(320, 370, 132, 27);
 
+        logOut1.setBackground(new java.awt.Color(255, 255, 255));
+        logOut1.setForeground(new java.awt.Color(0, 0, 0));
         logOut1.setText("Quitter");
         logOut1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,11 +108,11 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(logOut1);
-        logOut1.setBounds(590, 370, 132, 23);
+        logOut1.setBounds(470, 370, 132, 27);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Cool Simple Blue Backgrounds.jpg")); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 740, 410);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\10,500+ Navy Blue Abstract Background Stock Illustrations, Royalty-Free Vector Graphics & Clip Art.jpg")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 612, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,7 +176,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logOut;
     private javax.swing.JButton logOut1;
     private javax.swing.JLabel welcomeLabel;

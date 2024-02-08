@@ -1,147 +1,170 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package etudiantInterfaces;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.awt.Color;
+import java.util.List;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import main.connection;
 
-/**
- *
- * @author USER
- */
 public class examen extends javax.swing.JFrame {
-     private Connection connection;
-     private ResultSet resultSet;
-     private Timer countdownTimer;
-private int secondsLeft;
-    /**
-     * Creates new form examen
-     */
-    public examen() {
+
+    private int examenID, idEtud, matiereID;
+    private int totalQuestions;
+    private Timer countdownTimer;
+    private int secondsLeft;
+    private int currentQuestion = 0;
+    private List<Integer> questionIDs = new ArrayList<>();
+
+    public examen(int examenID, int idEtud, int matiereID) {
+        this.examenID = examenID;
+        this.matiereID = matiereID;
+        //this.classeID = classeID;
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setSize(740, 410);
-        fetchQuestionFromDatabase(); 
-        secondsLeft = 300; // 5 minutes
-    countdownTimer = new Timer(1000, e -> updateCountdown());
-    countdownTimer.start();
-        
-    }
-   private void fetchQuestionFromDatabase() {
+
         try {
-            String sql = "SELECT q.question, qr.reponsespossibles FROM question q " +
-                         "JOIN question_reponses qr ON q.id = qr.question_id " +
-                         "ORDER BY RANDOM() LIMIT 1"; // Fetch a random question for simplicity
+            String query = "SELECT duree FROM examen WHERE matiereid = " + matiereID ;
+            System.out.println(query);
+            Statement request = connection.connectDB().createStatement();
+            ResultSet r = request.executeQuery(query);
+            r.next();
+            this.secondsLeft = r.getInt("duree");
 
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                question.setText(resultSet.getString("question"));
-
-                String reponsesPossibles = resultSet.getString("reponsespossibles");
-                String[] reponsesArray = reponsesPossibles.split(",");
-
-                rep1.setText(reponsesArray[0]);
-                rep2.setText(reponsesArray[1]);
-                rep3.setText(reponsesArray[2]);
-                rep4.setText(reponsesArray[3]);
+            query = "SELECT COUNT(*) FROM question WHERE examen_id = " + examenID;
+            r = request.executeQuery(query);
+            r.next();
+            this.totalQuestions = r.getInt(1);
+            query = "SELECT id FROM question WHERE examen_id = " + examenID;
+            r = request.executeQuery(query);
+            while (r.next()) {
+                questionIDs.add(r.getInt("id"));
             }
+
+            Collections.shuffle(questionIDs);
+
+            countdownTimer = new Timer(1000, e -> updateCountdown());
+            query = "INSERT INTO etudiant_examen VALUES(" + idEtud + ", " + examenID + ", " + 0 + ")";
+            request.executeUpdate(query);
+            countdownTimer.start();
+
+            fetchQuestionFromDatabase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    
+
+    private void fetchQuestionFromDatabase() {
+        try {
+            String sql = "SELECT question, reponse FROM question WHERE examen_id = " + examenID + " AND id = " + questionIDs.get(currentQuestion);
+            Statement request = connection.connectDB().createStatement();
+            ResultSet r = request.executeQuery(sql);
+            r.next();
+            String question = r.getString("question");
+            List<String> reponses = new ArrayList<>();
+            reponses.add(r.getString("reponse"));
+            sql = "SELECT qr.reponsespossibles FROM question_reponses qr "
+                    + "JOIN question q ON qr.question_id = q.id "
+                    + "WHERE q.examen_id = " + examenID + " AND q.id = " + questionIDs.get(currentQuestion)
+                    + " ORDER BY RANDOM() LIMIT 3";
+            currentQuestion++;
+
+            request = connection.connectDB().createStatement();
+            r = request.executeQuery(sql);
+
+            while (r.next()) {
+                reponses.add(r.getString("reponsespossibles"));
+            }
+            Collections.shuffle(reponses);
+
+            questionLabel.setText(question);
+
+            jRadioButton2.setText(reponses.get(0));
+            jRadioButton3.setText(reponses.get(1));
+            jRadioButton4.setText(reponses.get(2));
+            jRadioButton1.setText(reponses.get(3));
+            
+            reponses.clear();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-   private void updateCountdown() {
+    
+
+    private void updateCountdown() {
         if (secondsLeft > 0) {
-        secondsLeft--;
-        int minutes = secondsLeft / 60;
-        int seconds = secondsLeft % 60;
-        String countdownText = String.format("%02d:%02d", minutes, seconds);
-        
-        // Mettez à jour votre interface utilisateur avec countdownText
-        conteRebour.setText("Compte à rebours : " + countdownText);
-    } else {
-        // Le compte à rebours est terminé, vous pouvez prendre des mesures ici (par exemple, fermer la fenêtre)
-        countdownTimer.stop();
-         JOptionPane.showMessageDialog(this, "Le temps est écoulé !");
+            secondsLeft--;
+            int minutes = secondsLeft / 60;
+            int seconds = secondsLeft % 60;
+            String countdownText = String.format("%02d:%02d", minutes, seconds);
+
+            // Mettez à jour votre interface utilisateur avec countdownText
+            conteRebour.setText("Compte à rebours : " + countdownText);
+        } else {
+            // Le compte à rebours est terminé, vous pouvez prendre des mesures ici (par exemple, fermer la fenêtre)
+            countdownTimer.stop();
+            JOptionPane.showMessageDialog(this, "Le temps est écoulé !");
+        }
     }
-}
 
-
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        question = new javax.swing.JLabel();
+        questionLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        rep1 = new javax.swing.JCheckBox();
-        rep2 = new javax.swing.JCheckBox();
-        rep3 = new javax.swing.JCheckBox();
-        rep4 = new javax.swing.JCheckBox();
         next = new javax.swing.JButton();
         conteRebour = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("QCM");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(170, 10, 342, 35);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 255));
         jLabel2.setText("Question :");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(47, 104, 56, 16);
+        jLabel2.setBounds(90, 110, 56, 16);
 
-        question.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(question);
-        question.setBounds(97, 123, 467, 25);
+        questionLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(questionLabel);
+        questionLabel.setBounds(170, 130, 467, 25);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
         jLabel3.setText("Cohcez la ou les bonnes réponses :");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(47, 55, 231, 20);
+        jLabel3.setBounds(100, 60, 231, 20);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 255));
         jLabel4.setText("Suggestions :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(47, 160, 73, 16);
-
-        rep1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        getContentPane().add(rep1);
-        rep1.setBounds(113, 194, 421, 23);
-
-        rep2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        getContentPane().add(rep2);
-        rep2.setBounds(113, 223, 421, 23);
-
-        rep3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        rep3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rep3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(rep3);
-        rep3.setBounds(113, 252, 421, 23);
-
-        rep4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        getContentPane().add(rep4);
-        rep4.setBounds(113, 281, 421, 23);
+        jLabel4.setBounds(90, 170, 73, 16);
 
         next.setBackground(new java.awt.Color(51, 255, 0));
         next.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -153,38 +176,63 @@ private int secondsLeft;
             }
         });
         getContentPane().add(next);
-        next.setBounds(600, 330, 79, 27);
+        next.setBounds(573, 330, 110, 31);
 
-        conteRebour.setForeground(new java.awt.Color(242, 242, 242));
-        conteRebour.setText("conte à rebour");
+        conteRebour.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        conteRebour.setForeground(new java.awt.Color(0, 102, 255));
+        conteRebour.setText("Conte à rebour");
+        conteRebour.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(conteRebour);
-        conteRebour.setBounds(490, 10, 210, 16);
+        conteRebour.setBounds(520, 50, 210, 16);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 0, 740, 410);
+        buttonGroup.add(jRadioButton1);
+        jRadioButton1.setForeground(new java.awt.Color(0, 102, 255));
+        getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(210, 280, 350, 20);
+
+        buttonGroup.add(jRadioButton2);
+        jRadioButton2.setForeground(new java.awt.Color(0, 102, 255));
+        getContentPane().add(jRadioButton2);
+        jRadioButton2.setBounds(210, 190, 360, 20);
+
+        buttonGroup.add(jRadioButton3);
+        jRadioButton3.setForeground(new java.awt.Color(0, 102, 255));
+        getContentPane().add(jRadioButton3);
+        jRadioButton3.setBounds(210, 220, 360, 20);
+
+        buttonGroup.add(jRadioButton4);
+        jRadioButton4.setForeground(new java.awt.Color(0, 102, 255));
+        getContentPane().add(jRadioButton4);
+        jRadioButton4.setBounds(210, 250, 360, 21);
+
+        jLabel6.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\Vector graphic of gradient abstract background.jpg")); // NOI18N
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(0, 0, 735, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rep3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rep3ActionPerformed
-
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-        fetchQuestionFromDatabase(); // Fetch the next question when the button is clicked
-    // Clear the selected checkboxes for the new question
-    rep1.setSelected(false);
-    rep2.setSelected(false);
-    rep3.setSelected(false);
-    rep4.setSelected(false);
+        if (currentQuestion < totalQuestions) {
+            fetchQuestionFromDatabase();
+            for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    String selectedAnswer = button.getText();
+                }
+            }
+            buttonGroup.clearSelection();
+            if(currentQuestion == totalQuestions){
+                next.setText("Terminer");
+                next.setBackground(Color.red);
+            }
+        }else{
+            this.dispose();
+        }
     }//GEN-LAST:event_nextActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -207,26 +255,26 @@ private int secondsLeft;
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new examen().setVisible(true);
+                new examen(1, 1, 11).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JLabel conteRebour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JButton next;
-    private javax.swing.JLabel question;
-    private javax.swing.JCheckBox rep1;
-    private javax.swing.JCheckBox rep2;
-    private javax.swing.JCheckBox rep3;
-    private javax.swing.JCheckBox rep4;
+    private javax.swing.JLabel questionLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,7 +17,7 @@ public class dashboardE extends javax.swing.JFrame {
         this.prenom = prenom;
         this.nom = nom;
         initComponents();
-         this.setSize(740, 410);
+         this.setSize(740, 425);
         look();
         this.setLocationRelativeTo(null);
         welcomeLabel.setText(welcomeLabel.getText() + " " + prenom + " " + nom);
@@ -28,7 +28,6 @@ public class dashboardE extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         welcomeLabel = new javax.swing.JLabel();
         logOut = new javax.swing.JButton();
         logOut1 = new javax.swing.JButton();
@@ -37,6 +36,7 @@ public class dashboardE extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jButton1.setBackground(new java.awt.Color(0, 102, 255));
         jButton1.setText("Planification des éxamens");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,23 +44,15 @@ public class dashboardE extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(120, 130, 229, 74);
-
-        jButton4.setText("Passer un éxamens");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(432, 125, 229, 74);
+        jButton1.setBounds(250, 150, 229, 74);
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        welcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        welcomeLabel.setForeground(new java.awt.Color(0, 0, 0));
         welcomeLabel.setText("Bonjour");
         getContentPane().add(welcomeLabel);
         welcomeLabel.setBounds(170, 30, 520, 48);
 
+        logOut.setBackground(new java.awt.Color(255, 0, 51));
         logOut.setText("Se déconnecter");
         logOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,8 +60,10 @@ public class dashboardE extends javax.swing.JFrame {
             }
         });
         getContentPane().add(logOut);
-        logOut.setBounds(420, 340, 132, 23);
+        logOut.setBounds(420, 340, 132, 27);
 
+        logOut1.setBackground(new java.awt.Color(255, 255, 255));
+        logOut1.setForeground(new java.awt.Color(0, 0, 0));
         logOut1.setText("Quitter");
         logOut1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,11 +71,11 @@ public class dashboardE extends javax.swing.JFrame {
             }
         });
         getContentPane().add(logOut1);
-        logOut1.setBounds(580, 340, 132, 23);
+        logOut1.setBounds(580, 340, 132, 27);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Cool Simple Blue Backgrounds.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\Vector graphic of gradient abstract background.jpg")); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 740, 410);
+        jLabel2.setBounds(0, 0, 735, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,10 +88,6 @@ public class dashboardE extends javax.swing.JFrame {
         this.dispose();
         new Home().setVisible(true);
     }//GEN-LAST:event_logOutActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-            new examen().setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -134,7 +124,6 @@ public class dashboardE extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton logOut;
     private javax.swing.JButton logOut1;

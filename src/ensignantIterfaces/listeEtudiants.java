@@ -12,11 +12,11 @@ public class listeEtudiants extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
 
     public listeEtudiants(int idEns) {
-         this.setSize(740, 410);
         this.idEnseignant = idEns;
         look();
         initComponents();
         
+        setSize(655, 530); 
         this.setLocationRelativeTo(null);
         String defaultSQL = "SELECT e.id, e.prenom, e.nom, e.email, c.niveau FROM etudiant e "
                 + "JOIN classe c ON e.classe_id = c.id "
@@ -35,7 +35,7 @@ public class listeEtudiants extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         quit = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -54,13 +54,15 @@ public class listeEtudiants extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(140, 90, 450, 210);
+        jScrollPane1.setBounds(40, 140, 510, 290);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 204));
         jLabel1.setText("Liste des étudiants associées");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 20, 304, 32);
+        jLabel1.setBounds(30, 30, 304, 32);
 
+        quit.setBackground(new java.awt.Color(255, 0, 51));
         quit.setText("Quitter");
         quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,11 +70,12 @@ public class listeEtudiants extends javax.swing.JFrame {
             }
         });
         getContentPane().add(quit);
-        quit.setBounds(570, 350, 135, 23);
+        quit.setBounds(500, 450, 135, 27);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 736, 420);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\Ppt Clipart Transparent PNG Hd, Blue Ppt Template, Blue, Template, Background PNG Image For Free Download.jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, -20, 660, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,7 +130,7 @@ public class listeEtudiants extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton quit;

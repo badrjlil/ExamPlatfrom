@@ -14,9 +14,9 @@ public class gestionMatieres extends javax.swing.JFrame {
     int idEns;
 
     public gestionMatieres(int idEns) {
-         this.setSize(740, 410);
         this.idEns = idEns;
         initComponents();
+        setSize(725, 450); 
         this.setLocationRelativeTo(null);
         refreshAffichage();
     }
@@ -58,22 +58,23 @@ public class gestionMatieres extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestion des matières");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(180, 10, 342, 35);
+        jLabel1.setBounds(190, 10, 342, 35);
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 255));
         jLabel4.setText("Liste des matiéres :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 60, 120, 16);
+        jLabel4.setBounds(130, 70, 99, 16);
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 255));
         jLabel3.setText("Ajouter une matiére :");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(371, 80, 130, 16);
+        jLabel3.setBounds(370, 80, 111, 16);
         getContentPane().add(nv_matiere);
-        nv_matiere.setBounds(510, 80, 201, 22);
+        nv_matiere.setBounds(500, 80, 201, 26);
 
         suppMat.setBackground(new java.awt.Color(255, 0, 0));
         suppMat.setForeground(new java.awt.Color(242, 242, 242));
@@ -84,7 +85,7 @@ public class gestionMatieres extends javax.swing.JFrame {
             }
         });
         getContentPane().add(suppMat);
-        suppMat.setBounds(256, 329, 85, 23);
+        suppMat.setBounds(252, 329, 89, 27);
 
         ajoutMat.setBackground(new java.awt.Color(51, 255, 0));
         ajoutMat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -96,7 +97,7 @@ public class gestionMatieres extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ajoutMat);
-        ajoutMat.setBounds(630, 110, 80, 27);
+        ajoutMat.setBounds(560, 120, 84, 31);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,6 +115,8 @@ public class gestionMatieres extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(33, 92, 308, 225);
 
+        quit.setBackground(new java.awt.Color(255, 255, 255));
+        quit.setForeground(new java.awt.Color(30, 30, 30));
         quit.setText("Quitter");
         quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,9 +124,10 @@ public class gestionMatieres extends javax.swing.JFrame {
             }
         });
         getContentPane().add(quit);
-        quit.setBounds(600, 360, 128, 38);
+        quit.setBounds(590, 360, 128, 38);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\Download White background with Blue Geometric and white line pattern for free.jpg")); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 740, 410);
 

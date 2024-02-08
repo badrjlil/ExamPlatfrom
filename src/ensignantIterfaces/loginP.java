@@ -9,10 +9,11 @@ import main.connection;
 public class loginP extends javax.swing.JFrame {
 
     public loginP() {
-         this.setSize(740, 410);
         initComponents();
         look();
+        setSize(757, 450); 
         this.setLocationRelativeTo(null);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -33,20 +34,28 @@ public class loginP extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Authentification du professeur");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 20, 342, 31);
+        jLabel1.setBounds(200, 30, 342, 31);
 
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 255));
         jLabel2.setText("Email");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 120, 29, 16);
+        jLabel2.setBounds(150, 130, 60, 17);
 
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
         jLabel3.setText("Mot de passe");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(50, 180, 70, 16);
+        jLabel3.setBounds(140, 200, 100, 17);
+
+        email.setBackground(new java.awt.Color(255, 255, 255));
+        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(email);
-        email.setBounds(140, 120, 356, 22);
+        email.setBounds(260, 130, 356, 18);
 
         connecter.setBackground(new java.awt.Color(51, 255, 0));
         connecter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -58,9 +67,12 @@ public class loginP extends javax.swing.JFrame {
             }
         });
         getContentPane().add(connecter);
-        connecter.setBounds(560, 300, 116, 27);
+        connecter.setBounds(590, 300, 120, 31);
+
+        mdp.setBackground(new java.awt.Color(255, 255, 255));
+        mdp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(mdp);
-        mdp.setBounds(140, 180, 356, 22);
+        mdp.setBounds(260, 190, 356, 18);
 
         back.setText("retour");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -69,9 +81,10 @@ public class loginP extends javax.swing.JFrame {
             }
         });
         getContentPane().add(back);
-        back.setBounds(570, 340, 110, 23);
+        back.setBounds(600, 350, 114, 27);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\Download White background with Blue Geometric and white line pattern for free.jpg")); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 740, 410);
 

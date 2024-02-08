@@ -15,9 +15,9 @@ public class planificateurExamen extends javax.swing.JFrame {
 
     public planificateurExamen(int idEns) {
         this.idEnseignant = idEns;
-         this.setSize(740, 410);
         look();
         initComponents();
+       setSize(725, 450); 
         this.setLocationRelativeTo(null);
         populateSubjectDropdown();
     }
@@ -77,10 +77,10 @@ public class planificateurExamen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setText("Matiére :");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 70, 60, 20);
+        jLabel1.setBounds(223, 67, 46, 16);
 
         matComb.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -88,12 +88,12 @@ public class planificateurExamen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(matComb);
-        matComb.setBounds(302, 62, 170, 22);
+        matComb.setBounds(302, 62, 170, 26);
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 255));
         jLabel2.setText("Classe: ");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 110, 50, 20);
+        jLabel2.setBounds(223, 119, 39, 16);
 
         classComb.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -101,7 +101,7 @@ public class planificateurExamen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(classComb);
-        classComb.setBounds(302, 110, 170, 22);
+        classComb.setBounds(302, 114, 170, 26);
 
         dateText.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -109,18 +109,19 @@ public class planificateurExamen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(dateText);
-        dateText.setBounds(164, 177, 204, 22);
+        dateText.setBounds(164, 185, 204, 26);
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
         jLabel3.setText("Date: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(110, 180, 50, 20);
+        jLabel3.setBounds(116, 185, 30, 16);
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 255));
         jLabel4.setText("Durée:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(400, 180, 50, 20);
+        jLabel4.setBounds(404, 187, 34, 16);
 
+        jButton1.setBackground(new java.awt.Color(0, 153, 0));
         jButton1.setText("Planifier l'examen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +129,7 @@ public class planificateurExamen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(465, 292, 170, 23);
+        jButton1.setBounds(465, 304, 170, 27);
 
         dureeValue.setMaximum(180);
         dureeValue.setMinimum(5);
@@ -140,13 +141,14 @@ public class planificateurExamen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(dureeValue);
-        dureeValue.setBounds(465, 177, 153, 20);
+        dureeValue.setBounds(465, 185, 153, 22);
 
-        heureLabel.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        heureLabel.setForeground(new java.awt.Color(0, 102, 255));
         heureLabel.setText("0 minutes");
         getContentPane().add(heureLabel);
-        heureLabel.setBounds(620, 180, 70, 20);
+        heureLabel.setBounds(520, 210, 52, 16);
 
+        quit.setBackground(new java.awt.Color(255, 0, 51));
         quit.setText("Annuler");
         quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,9 +156,10 @@ public class planificateurExamen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(quit);
-        quit.setBounds(465, 333, 170, 23);
+        quit.setBounds(465, 349, 170, 27);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Downloads\\Pastel Light Blue Wallpaper High Resolution.jpg")); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\P3dR0\\Downloads\\Download White background with Blue Geometric and white line pattern for free.jpg")); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 740, 410);
 
